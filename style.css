@@ -1,0 +1,149 @@
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #0a0a0a;
+      font-family: 'Cormorant Garamond', serif;
+      color: #f5e6c8;
+      overflow-x: hidden;
+    }
+
+    /* ── Section 1 ── */
+    #hero {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit:cover;
+      filter: brightness(0.45) saturate(1.2);
+      transition: transform 8s ease;
+      animation: slowZoom 14s ease-in-out infinite alternate;
+    }
+
+    @keyframes slowZoom {
+      from { transform: scale(1); }
+      to   { transform: scale(1.06); }
+    }
+
+    /* gradient overlay */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 60%, rgba(180,120,50,0.18) 0%, transparent 70%),
+        linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.65) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 2rem;
+      animation: fadeUp 1.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-content .eyebrow {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(0.75rem, 1.5vw, 1rem);
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: #c9a96e;
+      margin-bottom: 1.2rem;
+      opacity: 0.85;
+    }
+
+    .hero-content h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(4rem, 12vw, 10rem);
+      line-height: 1;
+      color: #fff;
+      text-shadow:
+        0 0 80px rgba(210,170,100,0.55),
+        0 4px 32px rgba(0,0,0,0.6);
+      letter-spacing: 0.02em;
+    }
+
+    .hero-content .subtitle {
+      margin-top: 1.4rem;
+      font-style: italic;
+      font-size: clamp(1rem, 2.5vw, 1.5rem);
+      font-weight: 300;
+      color: #e8d5b0;
+      letter-spacing: 0.12em;
+      opacity: 0.9;
+    }
+
+    /* floating sparkles */
+    .sparkle {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, #f5d98b, transparent 70%);
+      opacity: 0;
+      animation: sparkleAnim var(--dur) ease-in-out var(--delay) infinite;
+      pointer-events: none;
+    }
+    @keyframes sparkleAnim {
+      0%   { opacity: 0; transform: translateY(0) scale(0.5); }
+      50%  { opacity: 0.75; }
+      100% { opacity: 0; transform: translateY(-80px) scale(1.2); }
+    }
+
+    /* scroll cue */
+    .scroll-cue {
+      position: absolute;
+      bottom: 2.4rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0.5;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #c9a96e;
+      animation: bounce 2s ease infinite;
+    }
+    .scroll-cue::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, #c9a96e, transparent);
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ── Placeholder Section 2 ── */
+    #section2 {
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0e0d0b;
+      border-top: 1px solid rgba(201,169,110,0.15);
+    }
+    #section2 p {
+      font-style: italic;
+      font-size: 1.2rem;
+      color: rgba(245,230,200,0.3);
+      letter-spacing: 0.2em;
+    }
